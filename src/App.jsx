@@ -11,8 +11,14 @@ function App() {
     setIsLoading(true);
     axios
       .get(import.meta.env.VITE_API_URL)
-      .then(() => setStatusMessage('Success'))
-      .catch(() => setStatusMessage('Error'))
+      .then((data) => {
+        console.log(data);
+        setStatusMessage('Success');
+      })
+      .catch((error) => {
+        console.log(error);
+        setStatusMessage('Error');
+      })
       .finally(() => setIsLoading(false));
   }
 
