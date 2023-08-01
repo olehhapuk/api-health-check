@@ -3,6 +3,8 @@ import axios from 'axios';
 import { TailSpin as Loader } from 'react-loader-spinner';
 import './App.css';
 
+axios.defaults.baseURL = import.meta.env.VITE_API_URL;
+
 function App() {
   const [statusMessage, setStatusMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -10,7 +12,7 @@ function App() {
   function runCheck() {
     setIsLoading(true);
     axios
-      .get(import.meta.env.VITE_API_URL)
+      .get('/')
       .then((data) => {
         console.log(data);
         setStatusMessage('Success');
